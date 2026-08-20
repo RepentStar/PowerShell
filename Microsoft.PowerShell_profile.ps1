@@ -1,7 +1,7 @@
 # Remove build in Alias
 @(
     'rm', 'rmdir', 'mv', 'cp', 'cat', 'curl', 'wget',
-    'ls', 'diff', 'sort', 'tee', 'echo', 'sleep'
+    'ls', 'diff', 'sort', 'tee', 'echo', 'sleep', 'where'
 ) | ForEach-Object {
     if (Get-Alias $_ -ErrorAction SilentlyContinue) {
         Remove-Alias $_ -Force -ErrorAction SilentlyContinue
