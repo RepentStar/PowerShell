@@ -46,3 +46,4 @@ $PSCompletions.argc_completions($argc_scripts)
 # Autocomplete
 . "$HOME\Documents\PowerShell\Completions\_bat.ps1"
 . "$HOME\Documents\PowerShell\Completions\_fd.ps1"
+. "$HOME\Documents\PowerShell\Completions\_zoxide.ps1"
