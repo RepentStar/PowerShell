@@ -1,0 +1,24 @@
+
+Completion Alias
+---------- -----
+7z         {7z}
+adb        {adb}
+cargo      {cargo}
+curl       {curl}
+df         {df}
+du         {du}
+fzf        {fzf}
+gcc        {gcc}
+git        {git}
+just       {just}
+lazygit    {lazygit}
+pip        {pip}
+powershell {powershell}
+psc        {psc}
+python     {python}
+uv         {uv}
+winget     {winget}
+wsl        {wsl}
+yazi       {yazi}
+zoxide     {zoxide}
+
