@@ -25,6 +25,10 @@ Set-PSReadLineOption -PredictionViewStyle ListView -BellStyle None -EditMode Win
 Set-PSReadLineKeyHandler -Key 'Ctrl+z' -Function Undo
 Import-Module CompletionPredictor
 
+# argc
+$argc_scripts = @('git','ffmpeg')
+$PSCompletions.argc_completions($argc_scripts)
+
 # Custom Module
 Import-Module Terminal-Icons
 Import-Module PSCompletions
@@ -39,9 +43,7 @@ function File {
     }
 }
 
-# argc
-$argc_scripts = @('git','ffmpeg')
-$PSCompletions.argc_completions($argc_scripts)
+function reload { . $PROFILE; Write-Host "Profile reloaded!" -ForegroundColor Green }
 
 # Autocomplete
 . "$HOME\Documents\PowerShell\Completions\_bat.ps1"
