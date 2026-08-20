@@ -10,7 +10,11 @@ Register-ArgumentCompleter -CommandName onomedit, onomedit.exe -ScriptBlock {
 
     # 已敲入的完成参数；不含正在补全的半截词，由 prevIdx 处理。
     $tokens = $commandAst.CommandElements | ForEach-Object { $_.Extent.Text }
-    $cmd = if ($tokens.Count -gt 1) { $tokens[1] } else { "" }
+    $cmds = 'completion config gui help history rename restore version'.Split(' ')
+    # 仅当 $tokens[1] 完整命中已知子命令才视为子命令；否则视为第一级补全——
+    # CommandElements 会把正在补全的半截词也算作元素，直接取 $tokens[1] 会让
+    # 一级子命令补全失效。
+    $cmd = if ($tokens.Count -gt 1 -and $cmds -contains $tokens[1]) { $tokens[1] } else { '' }
 
     # 子命令候选（带 tip）
     $commands = @(
