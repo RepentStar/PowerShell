@@ -45,3 +45,6 @@ function reload { . $PROFILE; Write-Host "Profile reloaded!" -ForegroundColor Gr
 . "$HOME\Documents\PowerShell\Completions\_bat.ps1"
 . "$HOME\Documents\PowerShell\Completions\_fd.ps1"
 . "$HOME\Documents\PowerShell\Completions\_zoxide.ps1"
+
+. "$HOME\Documents\PowerShell\Completions\psc_winget.ps1"
+. "$HOME\Documents\PowerShell\Completions\psc_onomedit.ps1"
