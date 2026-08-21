@@ -3,7 +3,10 @@ Completion Alias
 ---------- -----
 7z         {7z}
 adb        {adb}
+bat        {bat}
 cargo      {cargo}
+cmake      {cmake}
+codewhale  {codewhale}
 curl       {curl}
 df         {df}
 du         {du}
@@ -12,13 +15,22 @@ gcc        {gcc}
 git        {git}
 just       {just}
 lazygit    {lazygit}
+md5sum     {md5sum}
+node       {node}
+npm        {npm}
+nvim       {nvim}
 pip        {pip}
 powershell {powershell}
 psc        {psc}
+pwsh       {pwsh}
 python     {python}
+rustc      {rustc}
+ssh-keygen {ssh-keygen}
+starship   {starship}
 uv         {uv}
+wget       {wget}
 winget     {winget}
 wsl        {wsl}
-yazi       {yazi}
+ya         {ya}
 zoxide     {zoxide}
 
