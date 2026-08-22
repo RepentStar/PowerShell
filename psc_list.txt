@@ -32,5 +32,6 @@ wget       {wget}
 winget     {winget}
 wsl        {wsl}
 ya         {ya}
+yazi       {yazi}
 zoxide     {zoxide}
 
