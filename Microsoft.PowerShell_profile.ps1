@@ -29,18 +29,6 @@ Import-Module CompletionPredictor
 Import-Module Terminal-Icons
 Import-Module PSCompletions
 
-function File {
-    param(
-        [Parameter(Mandatory=$true, Position=0, ValueFromPipeline=$true)]
-        [string]$file
-    )
-    process {
-        Get-Item -Path $file | Format-List *
-    }
-}
-
-function reload { . $PROFILE; Write-Host "Profile reloaded!" -ForegroundColor Green }
-
 # Autocomplete
 . "$HOME\Documents\PowerShell\Completions\_bat.ps1"
 . "$HOME\Documents\PowerShell\Completions\_fd.ps1"
@@ -49,3 +37,17 @@ function reload { . $PROFILE; Write-Host "Profile reloaded!" -ForegroundColor Gr
 
 . "$HOME\Documents\PowerShell\Completions\psc_winget.ps1"
 . "$HOME\Documents\PowerShell\Completions\psc_onomedit.ps1"
+
+# Function
+$functionsDir = "$HOME\Documents\PowerShell\Functions"
+if (-not (Test-Path $functionsDir)) {
+    Write-Warning "Functions directory not found: $functionsDir"
+} else {
+    Get-ChildItem -Path $functionsDir -Filter *.ps1 -File | ForEach-Object {
+        try {
+            . $_.FullName
+        } catch {
+            Write-Warning "Failed to load $($_.Name): $_"
+        }
+    }
+}
