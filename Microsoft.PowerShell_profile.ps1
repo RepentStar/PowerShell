@@ -23,6 +23,9 @@ Invoke-Expression (& { (zoxide init powershell | Out-String) })
 Import-Module PSReadLine
 Set-PSReadLineOption -PredictionViewStyle ListView -BellStyle None -EditMode Windows
 Set-PSReadLineKeyHandler -Key 'Ctrl+z' -Function Undo
+Set-PSReadLineOption -Colors @{
+    Parameter       = '#98FB98'
+}
 Import-Module CompletionPredictor
 
 # Custom Module
