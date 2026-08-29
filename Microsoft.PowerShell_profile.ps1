@@ -38,7 +38,6 @@ Import-Module PSCompletions
 . "$HOME\Documents\PowerShell\Completions\_zoxide.ps1"
 . "$HOME\Documents\PowerShell\Completions\_onomedit.ps1"
 
-. "$HOME\Documents\PowerShell\Completions\psc_winget.ps1"
 . "$HOME\Documents\PowerShell\Completions\psc_onomedit.ps1"
 
 # Function
