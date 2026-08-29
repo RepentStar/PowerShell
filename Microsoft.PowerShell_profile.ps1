@@ -21,16 +21,25 @@ Invoke-Expression (& { (zoxide init powershell | Out-String) })
 
 # auto suggestions
 Import-Module PSReadLine
-Set-PSReadLineOption -PredictionViewStyle ListView -BellStyle None -EditMode Windows
-Set-PSReadLineKeyHandler -Key 'Ctrl+z' -Function Undo
-Set-PSReadLineOption -Colors @{
-    Parameter       = '#98FB98'
-}
 Import-Module CompletionPredictor
 
 # Custom Module
 Import-Module Terminal-Icons
 Import-Module PSCompletions
+Import-Module PSFzf
+
+# Option
+Set-PSReadLineOption -PredictionViewStyle ListView -BellStyle None -EditMode Windows
+Set-PSReadLineKeyHandler -Key 'Ctrl+z' -Function Undo
+Set-PSReadLineOption -Colors @{
+    Parameter       = '#98FB98'
+}
+
+# 开启 Ctrl+T（路径）和 Ctrl+R（历史）
+Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
+
+# 用 fd 生成递归文件列表：更快，自动尊重 .gitignore、跳过 .git
+$env:FZF_CTRL_T_COMMAND = 'fd --type f --hidden --follow --exclude .git'
 
 # Autocomplete
 . "$HOME\Documents\PowerShell\Completions\_bat.ps1"
