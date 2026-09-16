@@ -32,7 +32,7 @@ Register-ArgumentCompleter -CommandName onomedit, onomedit.exe -ScriptBlock {
     $valueMap = @{
         '--path-type' = @(
             @{ name='full'; tip='完整路径' },
-            @{ name='name'; tip='仅文件名' },
+            @{ name='name'; tip='完整文件名' },
             @{ name='stem'; tip='不含扩展名' },
             @{ name='ext'; tip='仅扩展名' }
         )
