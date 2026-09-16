@@ -1,3 +1,9 @@
+# Keep PowerShell and native tools (notably fd/fzf used by PSFzf) on the same encoding. Windows may otherwise start the console on code page 936, which causes UTF-8 Chinese file names to be decoded as garbled text.
+$utf8NoBom = [System.Text.UTF8Encoding]::new($false)
+[Console]::InputEncoding = $utf8NoBom
+[Console]::OutputEncoding = $utf8NoBom
+$global:OutputEncoding = $utf8NoBom
+
 # Remove build in Alias
 @(
     'rm', 'rmdir', 'mv', 'cp', 'cat', 'curl', 'wget',
