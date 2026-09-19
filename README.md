@@ -1,8 +1,10 @@
-# 克隆(pwsh)
+# Custom pwsh config
 
-git clone https://github.com/RepentStar/PowerShell.git "$HOME\Documents\PowerShell"
+## 克隆(pwsh)
 
-# 安装模块
+`git clone https://github.com/RepentStar/PowerShell.git "$HOME\Documents\PowerShell"`
+
+## 安装模块
 
 ```powershell
 Install-Module -Name PSReadLine
@@ -12,11 +14,11 @@ Install-Module -Name PSCompletions
 Install-Module -Name PSFzf
 ```
 
-# 依赖外部程序
+## 依赖外部程序
 
 fd fzf zoxide ...
 
-# 自适应 `ls` 显示
+## 自适应 `ls` 显示
 
 `ls` 会先统计结果数量：不超过 20 项时使用详细表格，超过 20 项时使用紧凑的多列显示。
 原生 `Get-ChildItem` 不受影响，仍可安全地把对象传入管道。
