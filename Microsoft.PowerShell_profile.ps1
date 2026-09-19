@@ -16,8 +16,11 @@ $global:OutputEncoding = $utf8NoBom
 
 # Alias
 Set-Alias nv nvim -Force -Option AllScope
-function Back-Previous { cd .. }
-Set-Alias bd Back-Previous
+
+# zsh-style parent-directory shortcuts
+function ..   { Set-Location .. }
+function ...  { Set-Location ../.. }
+function .... { Set-Location ../../.. }
 
 # starship
 Invoke-Expression (&starship init powershell)
