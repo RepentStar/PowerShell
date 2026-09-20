@@ -148,9 +148,22 @@ function Get-AdaptiveChildItem {
 
         [string[]] $Include,
         [string[]] $Exclude,
+        [Alias('R')]
         [switch] $Recurse,
         [uint32] $Depth,
+
+        # Unix-style ls compatibility. PowerShell does not split a token such
+        # as -al into -a and -l, so the common combined forms are declared
+        # explicitly below.
+        [Alias('a', 'All')]
         [switch] $Force,
+
+        [Alias('l')]
+        [switch] $Long,
+
+        [Alias('al', 'la')]
+        [switch] $AllLong,
+
         [switch] $Name,
         [System.Management.Automation.FlagsExpression[System.IO.FileAttributes]] $Attributes,
         [switch] $FollowSymlink,
@@ -161,14 +174,25 @@ function Get-AdaptiveChildItem {
         [switch] $System
     )
 
+    $childItemParameters = @{}
+    foreach ($parameter in $PSBoundParameters.GetEnumerator()) {
+        $childItemParameters[$parameter.Key] = $parameter.Value
+    }
+    [void] $childItemParameters.Remove('Long')
+    [void] $childItemParameters.Remove('AllLong')
+
+    if ($AllLong) {
+        $childItemParameters.Force = $true
+    }
+
     # Buffering is intentional: the layout depends on the total item count.
-    $items = @(Microsoft.PowerShell.Management\Get-ChildItem @PSBoundParameters)
+    $items = @(Microsoft.PowerShell.Management\Get-ChildItem @childItemParameters)
 
     if ($items.Count -eq 0) {
         return
     }
 
-    if ($items.Count -le $global:AdaptiveLsCompactThreshold) {
+    if ($Long -or $AllLong -or $items.Count -le $global:AdaptiveLsCompactThreshold) {
         $items | Format-Table
     } else {
         Format-AdaptiveLsCompact -InputObject $items
