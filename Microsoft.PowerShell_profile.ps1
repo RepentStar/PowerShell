@@ -48,15 +48,6 @@ Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory
 
 # Import after setting EditMode because Set-PSReadLineOption resets key bindings.
 Import-Module PSCompletions
-if ($PSCompletions.guid) {
-    $psCompletionsTriggerKey = if ($PSCompletions.config.trigger_key) {
-        $PSCompletions.config.trigger_key
-    } else {
-        $PSCompletions.trigger_key
-    }
-    Set-PSReadLineKeyHandler -Key $psCompletionsTriggerKey `
-        -ScriptBlock $PSCompletions.menu.module_completion_menu_script
-}
 
 # 用 fd 生成递归文件列表：更快，自动尊重 .gitignore、跳过 .git
 $env:FZF_CTRL_T_COMMAND = 'fd --type f --hidden --follow --exclude .git'
