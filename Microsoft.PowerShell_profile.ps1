@@ -37,7 +37,11 @@ Import-Module Terminal-Icons
 Import-Module PSFzf
 
 # Option
-Set-PSReadLineOption -PredictionViewStyle ListView -BellStyle None -EditMode Windows
+Set-PSReadLineOption -BellStyle None -EditMode Windows
+# ListView reads the console width and requires a terminal with VT support.
+if ($env:TERM -ne 'dumb' -and $Host.UI.SupportsVirtualTerminal -and -not [Console]::IsOutputRedirected) {
+    Set-PSReadLineOption -PredictionViewStyle ListView
+}
 Set-PSReadLineKeyHandler -Key 'Ctrl+z' -Function Undo
 Set-PSReadLineOption -Colors @{
     Parameter       = '#98FB98'
