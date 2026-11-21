@@ -31,7 +31,7 @@ Register-ArgumentCompleter -Native -CommandName onomedit, onomedit.exe -ScriptBl
       switch ($cmd) {
           '' { $candidates = $cmds }
           'rename' {
-              $candidates = '--dry-run','--no-editor','--multi-tab','--reverse','-r','--recursive',
+              $candidates = '--dry-run','--no-editor','--absolute','--multi-tab','--reverse','-r','--recursive',
                   '--timeout','--depth','--sort-by','--exclude','--path-type'
           }
           'restore' { $candidates = '--all','--partial' }

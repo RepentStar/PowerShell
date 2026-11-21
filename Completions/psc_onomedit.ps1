@@ -64,8 +64,11 @@ Register-ArgumentCompleter -CommandName onomedit, onomedit.exe -ScriptBlock {
     $renameOpts = @(
         @{ name='--dry-run'; tip='预览不执行' }
         @{ name='--no-editor'; tip='跳过编辑器直接重命名' }
+        @{ name='--absolute'; tip='使用绝对路径编辑（仅适用于 full）' }
         @{ name='--multi-tab'; tip='多标签编辑器适配' }
         @{ name='--reverse'; tip='反转排序顺序' }
+        @{ name='-r'; tip='递归匹配通配符' }
+        @{ name='--recursive'; tip='递归匹配通配符' }
         @{ name='--timeout'; tip='编辑器等待超时（秒）' }
         @{ name='--depth'; tip='目录搜索深度（层级）' }
         @{ name='--sort-by'; tip='重命名顺序' }
